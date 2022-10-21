@@ -15,11 +15,11 @@ struct LeaderboardView: View {
         ZStack {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
-            VStack(spacing: 10) {
+            VStack(spacing: Constants.Design.vStackSpacing) {
                 HeaderView(leaderboardIsShowing: $leaderboardIsShowing)
                 LabelView()
                 ScrollView {
-                    VStack(spacing: 10) {
+                    VStack(spacing: Constants.Design.vStackSpacing) {
                         ForEach(game.leaderboardEntries.indices, id: \.self){ i in
                             let leaderboardEntry = game.leaderboardEntries[i]
                             RowView(index: i+1,
@@ -56,7 +56,7 @@ struct RowView: View {
         .background(
             RoundedRectangle(cornerRadius: .infinity)
                 .strokeBorder(Color("LeaderboardRowColor"),
-                              lineWidth: Constants.General.strokeWidth)
+                              lineWidth: Constants.Design.strokeWidth)
         )
         .padding(.leading)
         .padding(.trailing)
@@ -95,7 +95,7 @@ struct LabelView: View {
     var body: some View {
         HStack {
             Spacer()
-                .frame(width: Constants.General.roundedViewLength)
+                .frame(width: Constants.Design.roundedViewLength)
             Spacer()
             LabelText(text: "Score")
                 .frame(width: Constants.Leaderboard.leaderboardScoreColWidth)

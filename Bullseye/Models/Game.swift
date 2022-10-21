@@ -14,7 +14,7 @@ struct LeaderboardEntry {
 }
 
 struct Game {
-    var target = Int.random(in: 1...100)
+    var target = Int.random(in: Int(Constants.General.minSliderValue)...Int(Constants.General.maxSliderValue))
     var score = 0
     var round = 1
     var leaderboardEntries: [LeaderboardEntry] = []
@@ -28,15 +28,13 @@ struct Game {
     }
     
     func points(sliderValue: Int) -> Int {
-        let maximumScore = 100
-
         switch amountOff(sliderValue: sliderValue) {
         case 0:
-            return (maximumScore - amountOff(sliderValue: sliderValue)) + 100
+            return (Constants.Scoring.maximumScore - amountOff(sliderValue: sliderValue)) + Constants.Scoring.exactBonus
         case 1...2:
-            return (maximumScore - amountOff(sliderValue: sliderValue)) + 50
+            return (Constants.Scoring.maximumScore - amountOff(sliderValue: sliderValue)) + Constants.Scoring.closeBonus
         default:
-            return maximumScore - amountOff(sliderValue: sliderValue)
+            return Constants.Scoring.maximumScore - amountOff(sliderValue: sliderValue)
         }
     }
     
@@ -66,6 +64,6 @@ struct Game {
     
     
     func updateRandInt() -> Int {
-        Int.random(in: 1...100)
+        Int.random(in: Int(Constants.General.minSliderValue)...Int(Constants.General.maxSliderValue))
     }
 }

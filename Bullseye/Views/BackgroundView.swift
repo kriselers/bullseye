@@ -62,7 +62,7 @@ struct NumberView: View {
     var text: String
     
     var body: some View {
-        VStack(spacing: 5) {
+        VStack(spacing: 5.0) {
             LabelText(text: title.uppercased())
             RoundedRectangleTextView(text: text)
         }

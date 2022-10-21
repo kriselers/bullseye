@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var alertIsVisible = false
-    @State private var sliderValue = 50.0
+    @State private var alertIsVisible = Constants.General.initAlertIsVisible
+    @State private var sliderValue = Constants.General.initSliderValue
     @State private var game = Game()
     
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
@@ -21,7 +21,7 @@ struct ContentView: View {
             BackgroundView(game: $game)
             VStack {
                 InstructionsView(game: $game)
-                    .padding(.bottom, alertIsVisible ? 0.0 : 100.0)
+                    .padding(.bottom, alertIsVisible ? Constants.Design.instructionViewMinPadding : Constants.Design.instructionViewMaxPadding)
                 if alertIsVisible {
                     PointsView(alertIsVisible: $alertIsVisible, sliderValue: $sliderValue, game: $game)
                         .transition(.scale)
@@ -35,7 +35,7 @@ struct ContentView: View {
             if !alertIsVisible {
                 let isPortrait = horizontalSizeClass == .compact && verticalSizeClass == .regular
                 SliderView(sliderValue: $sliderValue)
-                    .padding(isPortrait ? .bottom : .top, 15.0)
+                    .padding(isPortrait ? .bottom : .top, Constants.Design.sliderViewPadding)
                     .transition(.scale)
             }
         }
@@ -48,8 +48,8 @@ struct InstructionsView: View {
     var body: some View {
         VStack {
             InstructionText(text: "🎯🎯🎯\nPut the bullseye as close as you can to")
-                .padding(.leading, 30.0)
-                .padding(.trailing, 30.0)
+                .padding(.leading, Constants.Design.instructionViewPadding)
+                .padding(.trailing, Constants.Design.instructionViewPadding)
             BigNumberText(text: "\(game.target)")
         }
     }
@@ -61,7 +61,7 @@ struct SliderView: View {
     var body: some View {
         HStack {
             SliderLabelText(text: "1")
-            Slider(value: $sliderValue, in: 1.0...100.0)
+            Slider(value: $sliderValue, in: Constants.General.minSliderValue...Constants.General.maxSliderValue)
             SliderLabelText(text: "100")
         }
         .padding()
@@ -80,20 +80,20 @@ struct HitMeButton: View {
             }
         }
         .bold()
-        .padding(20.0)
+        .padding(Constants.Design.hitMeButtonPadding)
         .font(.title3)
         .background(
             ZStack {
                 Color("ButtonColor")
-                LinearGradient(gradient: Gradient(colors: [Color.white.opacity(0.3), Color.clear]),
+                LinearGradient(gradient: Gradient(colors: [Color.white.opacity(Constants.Design.gradientOpacity), Color.clear]),
                                startPoint: .top, endPoint: .bottom)
             }
         )
         .foregroundColor(Color.white)
-        .cornerRadius(Constants.General.roundRectCornerRadius)
+        .cornerRadius(Constants.Design.roundRectCornerRadius)
         .overlay(
-            RoundedRectangle(cornerRadius: Constants.General.roundRectCornerRadius)
-                .strokeBorder(Color.white, lineWidth: Constants.General.strokeWidth)
+            RoundedRectangle(cornerRadius: Constants.Design.roundRectCornerRadius)
+                .strokeBorder(Color.white, lineWidth: Constants.Design.strokeWidth)
         )
     }
 }
