@@ -21,7 +21,7 @@ struct Game {
     
     init(loadTestData: Bool = false) {
         if loadTestData {
-            for i in 1...Constants.Leaderboard.leaderboardMaxEntries {
+            for i in 1...Constants.Leaderboard.MaxEntries {
                 leaderboardEntries.append(LeaderboardEntry(score: updateRandInt(), round: i, date: Date()))
             }
         }
@@ -41,7 +41,7 @@ struct Game {
     mutating func addToLeaderboard(points: Int) {
         leaderboardEntries.append(LeaderboardEntry(score: score, round: round, date: Date()))
         leaderboardEntries.sort { ($0.score/$0.round) > ($1.score/$1.round)}
-        if leaderboardEntries.count > Constants.Leaderboard.leaderboardMaxEntries { leaderboardEntries.removeLast() }
+        if leaderboardEntries.count > Constants.Leaderboard.MaxEntries { leaderboardEntries.removeLast() }
     }
     
     mutating func restart(points: Int) {

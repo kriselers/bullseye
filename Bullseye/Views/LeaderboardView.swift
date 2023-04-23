@@ -45,13 +45,13 @@ struct RowView: View {
             RoundedTextView(text: String(index))
             Spacer()
             ScoreText(score: score)
-                .frame(width: Constants.Leaderboard.leaderboardScoreColWidth)
+                .frame(width: Constants.Leaderboard.ScoreColWidth)
             Spacer()
             RoundText(round: round)
-                .frame(width: Constants.Leaderboard.leaderboardScoreColWidth)
+                .frame(width: Constants.Leaderboard.ScoreColWidth)
             Spacer()
             DateText(date: date)
-                .frame(width: Constants.Leaderboard.leaderboardDateColWidth)
+                .frame(width: Constants.Leaderboard.DateColWidth)
         }
         .background(
             RoundedRectangle(cornerRadius: .infinity)
@@ -60,7 +60,7 @@ struct RowView: View {
         )
         .padding(.leading)
         .padding(.trailing)
-        .frame(maxWidth: Constants.Leaderboard.leaderboardMaxRowWidth)
+        .frame(maxWidth: Constants.Leaderboard.MaxRowWidth)
     }
 }
 
@@ -98,18 +98,18 @@ struct LabelView: View {
                 .frame(width: Constants.Design.roundedViewLength)
             Spacer()
             LabelText(text: "Score")
-                .frame(width: Constants.Leaderboard.leaderboardScoreColWidth)
+                .frame(width: Constants.Leaderboard.ScoreColWidth)
             Spacer()
             LabelText(text: "Round")
-                .frame(width: Constants.Leaderboard.leaderboardScoreColWidth)
+                .frame(width: Constants.Leaderboard.ScoreColWidth)
             Spacer()
             LabelText(text: "Date")
-                .frame(width: Constants.Leaderboard.leaderboardDateColWidth)
+                .frame(width: Constants.Leaderboard.DateColWidth)
 
         }
         .padding(.leading)
         .padding(.trailing)
-        .frame(maxWidth: Constants.Leaderboard.leaderboardMaxRowWidth)
+        .frame(maxWidth: Constants.Leaderboard.MaxRowWidth)
     }
 }
 

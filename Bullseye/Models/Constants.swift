@@ -41,9 +41,9 @@ enum Constants {
     }
     
     enum Leaderboard {
-        public static let leaderboardMaxEntries = 10
-        public static let leaderboardScoreColWidth = CGFloat(70) // def: 50.0
-        public static let leaderboardDateColWidth = CGFloat(130) // def: 170.0
-        public static let leaderboardMaxRowWidth = CGFloat(480.0) // def: 480.0
+        public static let MaxEntries = 10
+        public static let ScoreColWidth = CGFloat(70) // def: 50.0
+        public static let DateColWidth = CGFloat(130) // def: 170.0
+        public static let MaxRowWidth = CGFloat(480.0) // def: 480.0
     }
 }
