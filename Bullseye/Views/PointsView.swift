@@ -21,10 +21,12 @@ struct PointsView: View {
             BigNumberText(text: "\(roundedValue)")
             BodyText(text: "You scored \(points) Points\n🎉🎉🎉")
             Button(action: {
-                withAnimation {
+                withAnimation(.easeIn(duration: 0.2)) {
                     alertIsVisible = false
                 }
-                game.startNewRound(points: points)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    game.startNewRound(points: points)
+                }
             }) {
                 ButtonText(text: "Start New Round")
             }
